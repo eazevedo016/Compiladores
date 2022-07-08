@@ -7,6 +7,7 @@ class Lexico():
         with open(caminhoArquivo,'r') as arquivo:
             self.conteudo = arquivo.read()
             self.pos = 0
+    linha = 1
     
 
     def nextToken(self):
@@ -36,8 +37,8 @@ class Lexico():
                     estado = 6
                     valor += c
                 elif (self.isEspaco(c)):
-                    estado = 0
-                    continue
+                    estado = 10
+                    # continue
                     valor += c
                 elif (self.isEletter(c)):
                     estado = 7
@@ -104,7 +105,7 @@ class Lexico():
                 
                 # atribui o valor e tipo de token
                 token.tipo = TipoToken.precedencia
-                token.valor = valor
+                token.valor = str(valor)
 
                 return token.toString()
 
