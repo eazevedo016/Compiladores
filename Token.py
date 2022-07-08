@@ -26,7 +26,9 @@ class Token():
 
     def toString(self):
         if(self.valor=='\n'):
-            return "Token[" + str(self.tipo) + ", " + "\\" + "n" + "]" 
+            return "Token[" + str(self.tipo) + ", " + "\\" + "n" + "]"
+        elif(self.valor=='\t'):
+            return "Token[" + str(self.tipo) + ", " + "\\" + "t" + "]"
         return "Token[" + str(self.tipo) + ", " + str(self.valor) + "]"
 
 
