@@ -11,7 +11,6 @@ class Lexico():
 
     def nextToken(self):
         
-        # print('pos:',self.pos)
         valor = ''
         token = None
         estado = 0
@@ -84,7 +83,6 @@ class Lexico():
                 token = Token()
                 
                 # atribui o valor e tipo de token
-
                 token.tipo = TipoToken.numero
                 token.valor = valor
                
@@ -92,7 +90,6 @@ class Lexico():
 
             # ESTADO 5
             if(estado == 5):
-                #self.backChar()
                 token = Token()
                 
                 # atribui o valor e tipo de token
