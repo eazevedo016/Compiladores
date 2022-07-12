@@ -5,11 +5,11 @@
 # Eliminando a Recursão à Esquerda
 
 - E -> TE’
-- E’ ->  +TE’ |  -TE’
+- E’ ->  +TE’ |  -TE’ | e
 - T -> PT’
-- T’ - > *PT’ | /PT’
+- T’ - > *PT’ | /PT’ | e
 - P -> exp[F] P’ | FP’
-- P’ -> ^FP’
+- P’ -> ^FP’ | e
 - F -> (E) | id
 
 # First e Follow
