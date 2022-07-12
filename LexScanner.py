@@ -57,6 +57,7 @@ class Lexico():
                 elif(self.isPonto(c)):
                     estado = 2
                     valor += c
+                    continue
                 else:
                     estado = 4
             
@@ -67,7 +68,7 @@ class Lexico():
                     valor += c
                 else:
                     estado = 3
-                    valor += c
+        
             
             # ESTADO 3
             if(estado == 3):
