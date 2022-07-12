@@ -16,25 +16,43 @@
 
 ## First
 
-- First(E) = { } U First{T} = { exp, ( , id }
-- First(E’) = { + , - }
-- First(T) = { }  U First(P) = { exp, ( , id }
-- First(T’) = { * , / }
-- First(P) = { exp } U First(F) = { exp, ( , id }
-- First(P’) = { ^ }
+- First(E) = { } U First{T} = { exp, ( , id }          
+- First(E’) = { + , - }                            
+- First(T) = { }  U First(P) = { exp, ( , id }     
+- First(T’) = { * , / }                           
+- First(P) = { exp } U First(F) = { exp, ( , id } 
+- First(P’) = { ^ }                               
 - First(F) = { ( , id }
 
+-sintetizando:
+- First(E)  = { exp, ( , id }          
+- First(E’) = { + , - }                            
+- First(T)  = { exp, ( , id }     
+- First(T’) = { * , / }                           
+- First(P)  = { exp, ( , id } 
+- First(P’) = { ^ }                               
+- First(F)  = { ( , id }
 
 
 ## Follow
 
-- Follow(E) = { $ , ) } 
-- Follow(E’) = { } U Follow(E) = { $ , ) }
-- Follow(T) = { } U First(E’) = 	 { + , - }			
-- Follow(T’) = { } U Follow(T) = { + , - }
-- Follow(P) = { } U First(T’) = { * , / }
-- Follow(P’) = { } U Follow(P) = { * , / }
-- Follow(F) = { } First(P’) = { ^ }
+- Follow(E) = { $, ) }
+- Follow(E’) =  { } U Follow(E) = { $, ) }
+- Follow(T) = 	{ } U First(E’)	= { + , - } U Follow(E) = {  + , - , $ , ) }
+- Follow(T’) = { } U Follow(T) =  {  + , - , $ , ) }
+- Follow(P) = { } U First(T’) =  { * , /  } U Follow(T) = {  * , / , + , - , $ , ) }
+- Follow(P’) = { } Follow(P) = {  * , / , + , - , $ , ) }
+- Follow(F) = { } U First(P’) = { ^} U Follow(P) =  {  ^, * , / , + , - , $ , ) }
+
+-sintetizando:
+- Follow(E)  = { ) , $ }
+- Follow(E’) = { ) , $ }
+- Follow(T)  = {  + , - , ) , $ }
+- Follow(T’) = {  + , - , ) , $ }
+- Follow(P)  = {  * , / , + , - , ) , $ }
+- Follow(P’) = {  * , / , + , - , ) , $ }
+- Follow(F)  = {  ^, * , / , + , - , ) , $ }
+
 
 
 
