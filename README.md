@@ -16,21 +16,22 @@
 
 ## First
 
-- First(E) = { } U First{T} = { exp, ( , id }          
-- First(E’) = { + , - }                            
-- First(T) = { }  U First(P) = { exp, ( , id }     
-- First(T’) = { * , / }                           
-- First(P) = { exp } U First(F) = { exp, ( , id } 
-- First(P’) = { ^ }                               
+- First(E) = { } U First{T} = { exp, ( , id }
+- First(E’) = { + , -, e }
+- First(T) = { }  U First(P) = { exp, ( , id }
+- First(T’) = { * , /  , e}
+- First(P) = { exp } U First(F) = { exp, ( , id }
+- First(P’) = { ^, e }
 - First(F) = { ( , id }
+
 
 -sintetizando:
 - First(E)  = { exp, ( , id }          
-- First(E’) = { + , - }                            
+- First(E’) = { + , - , e }                            
 - First(T)  = { exp, ( , id }     
-- First(T’) = { * , / }                           
+- First(T’) = { * , / , e }                           
 - First(P)  = { exp, ( , id } 
-- First(P’) = { ^ }                               
+- First(P’) = { ^ , e }                               
 - First(F)  = { ( , id }
 
 
