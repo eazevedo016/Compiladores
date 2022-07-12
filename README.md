@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/75282286/178392128-9c08496b-a17a-4c48-b37e-f5645368e08c.png)
 
-# Eliminando a Recursão à Esquerda
+# Eliminando Recursão à Esquerda
 
 - E -> TE’
 - E’ ->  +TE’ |  -TE’ | e
@@ -11,6 +11,11 @@
 - P -> exp[F] P’ | FP’
 - P’ -> ^FP’ | e
 - F -> (E) | id
+
+# Alfabeto
+
+- Terminais: + - * / exp ( ) [ ]
+- Não terminais: E E' T T' P P' F
 
 # First e Follow
 
