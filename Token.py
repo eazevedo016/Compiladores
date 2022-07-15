@@ -4,7 +4,7 @@ from tokenize import String
 
 class TipoToken(Enum):
 
-    # numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] *obs = podem ser reais
+    # numeros naturais = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     numero = 0
 
     # numero real
