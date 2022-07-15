@@ -8,7 +8,7 @@
 - E’ ->  +TE’ |  -TE’ | e
 - T -> PT’
 - T’ - > *PT’ | /PT’ | e
-- P -> exp[F] P’ | FP’
+- P -> exp[F] | FP’
 - P’ -> ^FP’ | e
 - F -> (E) | id
 
