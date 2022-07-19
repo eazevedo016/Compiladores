@@ -1,10 +1,6 @@
 def isE(token):
     global pilha 
-    if(token=='id'):
-        pilha = pilha.replace("E","TE'",1)
-    elif(token=='exp'):
-        pilha = pilha.replace("E","TE'",1)
-    elif(token=='('):
+    if(token=='id' or token=='exp' or token=='('):
         pilha = pilha.replace("E","TE'",1)
     else:
         raise Exception('Erro sintático.')
@@ -26,11 +22,7 @@ def isElinha(token):
 
 def isT(token): 
     global pilha 
-    if(token=='id'):
-        pilha = pilha.replace("T","PT'",1)
-    elif(token=='exp'):
-        pilha = pilha.replace("T","PT'",1)
-    elif(token=='('):
+    if(token=='id' or token=='exp' or token=='('):
         pilha = pilha.replace("T","PT'",1)
     else:
         raise Exception('Erro sintático.') 
@@ -164,7 +156,7 @@ def Sintatico(tokenList):
    
 def main():
 
-    tokenList = ['id','id','*','id', '^', 'id']
+    tokenList = ['id','+','-','id','*','id', '^', 'id']
     Sintatico(tokenList)
     print("Cadeia aceita")
     
