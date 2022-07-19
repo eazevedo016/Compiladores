@@ -200,6 +200,7 @@ class Lexico():
     
 def main():
     token = Lexico('inputLexico.txt')
+
     while not(token.isEOF()):
         print(token.nextToken())
 
