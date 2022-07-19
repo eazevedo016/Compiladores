@@ -60,6 +60,12 @@
 - Follow(F)  = {  ^, * , / , + , - , ) , $ }
 
 
+# Tabela M
+
+![image](https://user-images.githubusercontent.com/75282286/179770972-777b5011-2b53-4a97-8ed4-4d529f2fefce.png)
+
+
+
 
 
 
