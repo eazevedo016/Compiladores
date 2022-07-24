@@ -218,20 +218,19 @@ class Lexico():
 
     
 def main():
-    token = Lexico('inputLexico.txt')
+    token = Lexico('entrada.txt')
     while not(token.isEOF()):
         print(token.nextToken().valor)
 
-    # while not(token.isEOF()):
-    #     valor = token.nextToken()
-    #     if valor != None:
-    #         if valor.valor not in  ["\n"," ","\t"]:
-    #             print(valor.valor)
+    while not(token.isEOF()):
+        valor = token.nextToken()
+        if valor != None:
+            if valor.valor not in  ["\n"," ","\t"]:
+                print(valor.valor)
         
     
-    #print(listaToken)
 
-#main()
+# main()
     
 
 
