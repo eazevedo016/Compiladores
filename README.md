@@ -4,7 +4,7 @@
 - Altere o arquivo "entrada.txt" de acordo com as entradas que deseja testar;
 - Abra o arquivo "Main.py" e execute o arquivo na IDE de sua preferência.
 - Caso queira testar unicamente o Analisador Léxico e/ou Sintático:
-- Abra o arquivo "LexScanner.py" (analisador léxico) e/ou "Sintatico.py" (analisador sintático), descomente a chamada da função "main()" na última linha do arquivo e execute.
+- Abra o arquivo "LexScanner.py" (analisador léxico) e/ou "Sintatico.py" (analisador sintático), descomente a chamada da função "main()" na última linha do arquivo e execute o arquivo.
 
 
 # Autômato
