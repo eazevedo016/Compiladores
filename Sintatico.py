@@ -1,11 +1,14 @@
 from LexScanner import Lexico
 from PosFixa import posFixa
+from Executor import Executor
 class Sintatico():
     pilha = ""
     pilha2 = []
-    ListaCadeias = []
+    listaCadeias = []
     listaTokens = []
+    listaDeResultados = []
     posfixa = posFixa()
+    executor = Executor()
 
     def isE(self,token):
         if(token=='id' or token=='exp' or token=='('):
@@ -78,24 +81,24 @@ class Sintatico():
         lista = []
         while not(lexico.isEOF()):
             token = lexico.nextToken()
-            print(token.valor)
+            #print(token.valor)
             if token.valor == "\n" and len(lista)>0:
                 self.listaTokens.append(lista)
                 lista = []
-            elif token.valor not in  ['\n','','\t']:
+            elif token.valor not in  ['\n',' ','\t']:
                 lista.append(token.valor)
 
         if len(lista) > 0:
             self.listaTokens.append(lista)
         
-        print("tamanho lista : " + str(len(self.listaTokens)))
-        print("lista: ",  self.listaTokens)
+        #print("tamanho lista : " + str(len(self.listaTokens)))
+        #print("lista: ",  self.listaTokens)
         for lista2 in self.listaTokens:
             self.cadeia = ''
             self.pilha = 'E$'
-            print("lista entrada: " + str(lista2))
+            #print("lista entrada: " + str(lista2))
             for token in lista2:
-                print(token)
+                #print(token)
                 if (str(token).isnumeric() or '.' in token):
                     literal = token
                     token = 'id'
@@ -124,7 +127,7 @@ class Sintatico():
                     elif(self.pilha.startswith("id")):
                         self.pilha = self.pilha.replace("id","", 1)
                         self.posfixa.inserirPosfixa(literal)
-                        self.cadeia = self.cadeia + 'id'
+                        self.cadeia = self.cadeia + literal
                         break
                     elif(self.pilha.startswith("+")):
                         self.pilha = self.pilha.replace("+","", 1)
@@ -179,23 +182,21 @@ class Sintatico():
                         self.cadeia = self.cadeia + '$'
                         break
             self.posfixa.desempilharTudo()
-            print("pilhaPosFixa: " + str(self.posfixa.pilhaPosFixa))
+            self.listaDeResultados.append(self.executor.executarOperacao(self.posfixa.pilhaPosFixa))
             self.posfixa.resetarPilhas()
-            self.ListaCadeias.append(self.cadeia)
+            self.listaCadeias.append(self.cadeia)
         
 
     
    
 def main():
-
-
     
     sintatico = Sintatico()
-    sintatico.AvaliarSintaxe('inputLexico.txt')
-    
+    sintatico.AvaliarSintaxe('entrada.txt')
+    print("resultados: " + str(sintatico.listaDeResultados))
     print("Cadeia(as) aceita(as)")
     
     
-main()
+#main()
 
 

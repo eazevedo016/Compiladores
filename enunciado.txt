@@ -6,10 +6,11 @@ Implemente o Analisador Léxico, Sintático e Semântico da gramática a seguir.
 id = número inteiro ou real
 
 Exemplos:
-1+2*3^4  			// 163
-(1+2)*3^4 		    // 243
-1+(2*3)^4 		    // 1297
-1+(2*3)+exp[4] 	    // 61,598150033
+1+2*3^4                 // 163
+(1+2)*3^4                   // 243
+1+(2*3)^4                   // 1297
+1+(2*3)+exp[4]      // 61,598150033
+
 
 
 
