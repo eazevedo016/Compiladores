@@ -60,9 +60,16 @@
 - Follow(F)  = {  ^, * , / , + , - , ) , $ }
 
 
-# Tabela M
+# Tabela M para análise sintática
 
 ![image](https://user-images.githubusercontent.com/75282286/179992492-3d92d4b1-8154-4f39-9995-44db848666e2.png)
+
+# Semântico
+
+Foi usado o conceito de "pilha posfixa" para o cálculo das expressões de entrada. Trata-se da realocação dos elementos da pilha original, empilhando o operador após os seus operandos. Dessa forma o cálculo é feito seguindo a ordem de precedência corretamente.
+Portanto, implica-se que a regra semântica aplicada sobre o compilador é a execução correta da operação seguindo sua ordem de precedência de operadores.
+![image](https://user-images.githubusercontent.com/75282286/180669599-2a85e15b-abc7-4d4b-bbb8-44b1d3a4915f.png)
+
 
 
 
