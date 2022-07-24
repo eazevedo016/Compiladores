@@ -17,15 +17,16 @@ class Lexico():
         valor = ''
         token = None
         estado = 0
-        if(not self.pos == 0):
-            self.backChar()
+        # if(not self.pos == 0):
+        #     self.backChar()
         
         while(True):
 
             
            
             if(self.isEOF()):
-                return None
+                self.pos = len(self.conteudo)+1
+                #return None
            
             c = self.nextChar()
 
@@ -47,6 +48,8 @@ class Lexico():
                 elif (self.isEletter(c)):
                     estado = 7
                     valor += c
+                elif (c == "$$"):
+                    break
                 else:
                     raise Exception(f"Token não reconhecido. Linha: {self.linha} Posição: {self.pos - 1} Token: {valor}")
                 continue
@@ -81,6 +84,7 @@ class Lexico():
                 # atribui o valor e tipo de token
                 token.tipo = TipoToken.numeroReal
                 token.valor = valor
+                self.backChar()
 
                 return token
 
@@ -91,7 +95,8 @@ class Lexico():
                 # atribui o valor e tipo de token
                 token.tipo = TipoToken.numero
                 token.valor = valor
-               
+                self.backChar()
+
                 return token
 
             # ESTADO 5
@@ -101,6 +106,7 @@ class Lexico():
                 # atribui o valor e tipo de token
                 token.tipo = TipoToken.operador
                 token.valor = valor
+                self.backChar()
 
                 return token
 
@@ -111,6 +117,7 @@ class Lexico():
                 # atribui o valor e tipo de token
                 token.tipo = TipoToken.precedencia
                 token.valor = str(valor)
+                self.backChar()
 
                 return token
 
@@ -140,6 +147,7 @@ class Lexico():
                 # atribui o valor e tipo de token
                 token.tipo = TipoToken.operador
                 token.valor = valor
+                self.backChar()
 
                 return token
 
@@ -150,6 +158,7 @@ class Lexico():
                 # atribui o valor e tipo de token
                 token.tipo = TipoToken.espacos
                 token.valor = valor
+                self.backChar()
 
                 return token
 
@@ -186,20 +195,21 @@ class Lexico():
     
     # verificar se chegou ao fim da fita
     def isEOF(self):
-        return self.pos == len(self.conteudo) 
+        return self.pos >= len(self.conteudo) 
 
     # anda na fita
     def nextChar(self):
         if(self.isEOF()):
-            return 0
+            return '$$'
         aux = self.pos
         self.pos += 1
         return self.conteudo[aux]
     
     # volta na fita
     def backChar(self):
-        if(not self.isEOF()):
-            self.pos -= 1
+        self.pos -= 1
+        # if(not self.isEOF()):
+        #     self.pos -= 1
     
 
 
@@ -209,7 +219,6 @@ class Lexico():
     
 def main():
     token = Lexico('inputLexico.txt')
-
     while not(token.isEOF()):
         print(token.nextToken().valor)
 
@@ -222,8 +231,7 @@ def main():
     
     #print(listaToken)
 
-
+main()
     
-
 
 

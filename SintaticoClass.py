@@ -1,9 +1,11 @@
 from LexScanner import Lexico
+from PosFixa import posFixa
 class Sintatico():
     pilha = ""
     pilha2 = []
     ListaCadeias = []
     listaTokens = []
+    posfixa = posFixa()
 
     def isE(self,token):
         if(token=='id' or token=='exp' or token=='('):
@@ -80,10 +82,11 @@ class Sintatico():
             if token.valor == "\n" and len(lista)>0:
                 self.listaTokens.append(lista)
                 lista = []
-            elif token.valor not in  [' ','\t']:
+            elif token.valor not in  ['\n','','\t']:
                 lista.append(token.valor)
 
-        self.listaTokens.append(lista)
+        if len(lista) > 0:
+            self.listaTokens.append(lista)
         
         print("tamanho lista : " + str(len(self.listaTokens)))
         print("lista: ",  self.listaTokens)
@@ -94,6 +97,7 @@ class Sintatico():
             for token in lista2:
                 print(token)
                 if (str(token).isnumeric() or '.' in token):
+                    literal = token
                     token = 'id'
                 if ((self.pilha == '$') and (token == '$')):
                     break
@@ -119,38 +123,47 @@ class Sintatico():
 
                     elif(self.pilha.startswith("id")):
                         self.pilha = self.pilha.replace("id","", 1)
+                        self.posfixa.inserirPosfixa(literal)
                         self.cadeia = self.cadeia + 'id'
                         break
                     elif(self.pilha.startswith("+")):
                         self.pilha = self.pilha.replace("+","", 1)
+                        self.posfixa.ajustarPilhas(token)
                         self.cadeia = self.cadeia + '+'
                         break
                     elif(self.pilha.startswith("-")):
                         self.pilha = self.pilha.replace("-","", 1)
+                        self.posfixa.ajustarPilhas(token)
                         self.cadeia = self.cadeia + '-'
                         break
                     elif(self.pilha.startswith("/")):
                         self.pilha = self.pilha.replace("/","", 1)
+                        self.posfixa.ajustarPilhas(token)
                         self.cadeia = self.cadeia + '/'
                         break
                     elif(self.pilha.startswith("*")):
                         self.pilha = self.pilha.replace("*","", 1)
+                        self.posfixa.ajustarPilhas(token)
                         self.cadeia = self.cadeia + '*'
                         break
                     elif(self.pilha.startswith("^")):
                         self.pilha = self.pilha.replace("^","", 1)
+                        self.posfixa.ajustarPilhas(token)
                         self.cadeia = self.cadeia + '^'
                         break
                     elif(self.pilha.startswith("exp")):
                         self.pilha = self.pilha.replace("exp","", 1)
+                        self.posfixa.ajustarPilhas(token)
                         self.cadeia = self.cadeia + 'exp'
                         break
                     elif(self.pilha.startswith("(")):
                         self.pilha = self.pilha.replace("(","", 1)
+                        self.posfixa.inserirPilha(token)
                         self.cadeia = self.cadeia + '('
                         break
                     elif(self.pilha.startswith(")")):
                         self.pilha = self.pilha.replace(")","", 1)
+                        self.posfixa.desempilharParenteses()
                         self.cadeia = self.cadeia + ')'
                         break
                     elif(self.pilha.startswith("[")):
@@ -164,7 +177,10 @@ class Sintatico():
                     elif(self.pilha.startswith("$")):
                         self.pilha = self.pilha.replace("$","", 1)
                         self.cadeia = self.cadeia + '$'
-                        break   
+                        break
+            self.posfixa.desempilharTudo()
+            print("pilhaPosFixa: " + str(self.posfixa.pilhaPosFixa))
+            self.posfixa.resetarPilhas()
             self.ListaCadeias.append(self.cadeia)
         
 
@@ -177,7 +193,7 @@ def main():
     sintatico = Sintatico()
     sintatico.AvaliarSintaxe('inputLexico.txt')
     
-    print("self.cadeia aceita")
+    print("Cadeia(as) aceita(as)")
     
     
 main()
